@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="何浩冉竞选26级审计学4班学习委员">
+  <title>何浩冉 | 学习委员竞选</title>
+  <style>
+    :root {
+      --ink: #17232e;
+      --muted: #61717d;
+      --paper: #f8f5ee;
+      --blue: #125c79;
+      --blue-deep: #0b3446;
+      --orange: #ef7c43;
+      --yellow: #f4c95d;
+      --line: #d8dedc;
+      --white: #fffdf8;
+      --shadow: 0 22px 55px rgba(19, 47, 60, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      line-height: 1.75;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: 12px;
+      z-index: 20;
+      padding: 8px 12px;
+      background: var(--yellow);
+      color: var(--blue-deep);
+      transform: translateY(-150%);
+      transition: transform .2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .site-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px clamp(18px, 5vw, 72px);
+      background: rgba(248, 245, 238, .91);
+      border-bottom: 1px solid rgba(216, 222, 220, .8);
+      backdrop-filter: blur(12px);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .brand-mark {
+      display: grid;
+      width: 33px;
+      height: 33px;
+      place-items: center;
+      color: var(--white);
+      background: var(--orange);
+      border-radius: 50%;
+      font-size: 15px;
+    }
+    .nav-links { display: flex; gap: 24px; font-size: 14px; color: var(--muted); }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--orange); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      color: var(--white);
+      background: var(--blue);
+      border: 0;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .nav-cta:hover { background: var(--blue-deep); }
+
+    .hero {
+      position: relative;
+      min-height: 780px;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(7, 29, 40, .88), rgba(7, 29, 40, .3) 58%, rgba(7, 29, 40, .42)),
+        linear-gradient(0deg, rgba(7, 29, 40, .72), transparent 56%),
+        url("assets/hero-progress.png") center / cover;
+    }
+    .hero-inner {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 138px 0 96px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--yellow);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 2px;
+      background: var(--orange);
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 20px;
+      font-size: clamp(3.3rem, 7vw, 7.6rem);
+      line-height: .96;
+      letter-spacing: 0;
+    }
+    .hero-lede {
+      max-width: 610px;
+      margin-bottom: 32px;
+      color: #e9f2f1;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+    .progress-slogan {
+      width: fit-content;
+      margin: 0 0 20px;
+      padding: 5px 10px;
+      color: #d92525;
+      background: rgba(255, 253, 248, .94);
+      border-left: 4px solid #d92525;
+      font-size: 1.08rem;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 10px 16px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: var(--blue-deep); background: var(--yellow); }
+    .button-secondary { color: var(--white); background: transparent; border-color: rgba(255,255,255,.62); }
+    .hero-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px 24px;
+      margin-top: 54px;
+      color: #dbe7e5;
+      font-size: 13px;
+    }
+    .hero-note span::before { content: "•"; margin-right: 8px; color: var(--orange); }
+
+    .section {
+      position: relative;
+      padding: 112px 20px;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .section-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1160px, 100%);
+      margin: 0 auto;
+    }
+    .character-decor {
+      position: absolute;
+      z-index: 1;
+      display: block;
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 15px 16px rgba(21, 45, 52, .2));
+    }
+    .character-calm {
+      right: max(54px, calc((100vw - 1280px) / 2));
+      bottom: 34px;
+      width: 128px;
+      transform: rotate(4deg);
+    }
+    .character-thinking {
+      left: max(54px, calc((100vw - 1280px) / 2));
+      bottom: 30px;
+      width: 150px;
+      transform: rotate(-3deg);
+    }
+    .character-ready {
+      right: max(54px, calc((100vw - 1280px) / 2));
+      bottom: 30px;
+      width: 165px;
+      transform: rotate(2deg);
+    }
+    #opening { padding-bottom: 245px; }
+    #why { padding-bottom: 205px; }
+    #promise { padding-bottom: 210px; }
+    .character-courage {
+      right: max(16px, calc((100vw - 1410px) / 2));
+      bottom: 20px;
+      width: 145px;
+      transform: rotate(3deg);
+    }
+    .character-finish {
+      right: max(34px, calc((100vw - 1280px) / 2));
+      top: 54px;
+      width: 190px;
+      filter: drop-shadow(0 18px 18px rgba(111, 43, 12, .2));
+    }
+    .section-kicker {
+      margin-bottom: 12px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      gap: 56px;
+      align-items: end;
+      margin-bottom: 54px;
+    }
+    h2 {
+      margin-bottom: 0;
+      color: var(--blue-deep);
+      font-size: clamp(2rem, 4vw, 4.2rem);
+      line-height: 1.08;
+    }
+    .section-heading p { max-width: 560px; margin-bottom: 0; color: var(--muted); }
+    .opening {
+      background: var(--white);
+    }
+    .opening-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+      gap: 58px;
+      align-items: center;
+    }
+    .speech {
+      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+      line-height: 1.95;
+    }
+    .speech strong { color: var(--orange); }
+    .identity-panel {
+      position: relative;
+      max-width: 380px;
+      margin-left: auto;
+      padding: 46px 38px;
+      color: var(--white);
+      background: var(--blue-deep);
+      border-top: 8px solid var(--yellow);
+      box-shadow: var(--shadow);
+    }
+    .identity-panel span {
+      display: block;
+      margin-bottom: 20px;
+      color: var(--yellow);
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .identity-panel strong {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 2.7rem;
+      line-height: 1.1;
+    }
+    .identity-panel p {
+      margin-bottom: 0;
+      color: #c8d9d8;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .statement {
+      padding: 34px;
+      background: var(--white);
+      border-top: 4px solid var(--blue);
+      box-shadow: 0 10px 30px rgba(19, 47, 60, .06);
+    }
+    .statement:nth-child(2) { border-top-color: var(--orange); }
+    .statement h3 { margin-bottom: 14px; color: var(--blue-deep); font-size: 1.5rem; }
+    .statement p { margin-bottom: 0; color: var(--muted); }
+    .quote-bar {
+      margin-top: 34px;
+      padding: 20px 24px;
+      color: var(--blue-deep);
+      background: #eef3ed;
+      border-left: 5px solid var(--yellow);
+      font-weight: 800;
+    }
+
+    .promise {
+      background: var(--blue-deep);
+      color: #edf4f1;
+    }
+    .promise .section-kicker { color: var(--yellow); }
+    .promise h2 { color: var(--white); }
+    .promise .section-heading p { color: #bad1d0; }
+    .promise-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: rgba(255,255,255,.2);
+      border: 1px solid rgba(255,255,255,.2);
+    }
+    .promise-item {
+      min-height: 230px;
+      padding: 30px;
+      background: var(--blue-deep);
+    }
+    .promise-number {
+      display: block;
+      margin-bottom: 30px;
+      color: var(--yellow);
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .promise-item h3 { margin-bottom: 10px; color: var(--white); font-size: 1.3rem; }
+    .promise-item p { margin-bottom: 0; color: #bad1d0; font-size: .95rem; }
+
+    .strengths {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 58px;
+      align-items: start;
+    }
+    .strength-intro { position: sticky; top: 100px; }
+    .strength-intro p { color: var(--muted); }
+    .honesty {
+      margin-top: 28px;
+      padding: 18px 20px;
+      color: var(--blue-deep);
+      background: #fff0df;
+      border-left: 4px solid var(--orange);
+      font-weight: 800;
+    }
+    .skill-list { display: grid; gap: 20px; }
+    .skill {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .skill:last-child { border-bottom: 0; }
+    .skill-icon {
+      display: grid;
+      width: 50px;
+      height: 50px;
+      place-items: center;
+      color: var(--white);
+      background: var(--orange);
+      border-radius: 50%;
+      font-weight: 900;
+    }
+    .skill:nth-child(2) .skill-icon { background: var(--blue); }
+    .skill:nth-child(3) .skill-icon { color: var(--blue-deep); background: var(--yellow); }
+    .skill h3 { margin-bottom: 4px; font-size: 1.15rem; }
+    .skill p { margin-bottom: 0; color: var(--muted); }
+
+    .gallery {
+      background: #e7eeea;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      grid-template-rows: 230px 230px;
+      gap: 14px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      min-height: 180px;
+      padding: 0;
+      border: 0;
+      background: var(--blue-deep);
+      cursor: pointer;
+    }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+    .gallery-item:hover img, .gallery-item:focus-visible img { transform: scale(1.04); }
+    .gallery-label {
+      position: absolute;
+      left: 15px;
+      right: 15px;
+      bottom: 14px;
+      padding: 7px 10px;
+      color: var(--white);
+      background: rgba(7, 29, 40, .78);
+      font-size: 12px;
+      text-align: left;
+    }
+    .gallery-note { margin-top: 18px; color: var(--muted); font-size: 13px; }
+
+    .closing {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--orange);
+    }
+    .closing::after {
+      content: "学习委员";
+      position: absolute;
+      right: -35px;
+      bottom: -40px;
+      color: rgba(255,255,255,.14);
+      font-size: clamp(5rem, 18vw, 15rem);
+      font-weight: 900;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .closing-inner { position: relative; z-index: 1; }
+    .closing h2 { max-width: 780px; color: var(--white); }
+    .closing p { max-width: 650px; color: #fff3e8; font-size: 1.1rem; }
+    .closing .button-primary { color: var(--orange); background: var(--white); }
+    .closing small { display: block; margin-top: 30px; color: #ffe1cc; }
+
+    .footer {
+      padding: 22px 20px;
+      color: #75909a;
+      background: var(--blue-deep);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: none;
+      place-items: center;
+      padding: 22px;
+      background: rgba(7, 29, 40, .9);
+    }
+    .lightbox.is-open { display: grid; }
+    .lightbox img { max-width: min(100%, 1000px); max-height: 82vh; object-fit: contain; }
+    .lightbox-caption { margin-top: 12px; color: var(--white); text-align: center; }
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      color: var(--white);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.6);
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 24px;
+    }
+    .presentation-mode .site-nav { display: none; }
+    .presentation-mode .hero { min-height: 100vh; }
+
+    @media (max-width: 800px) {
+      .nav-links { display: none; }
+      .site-nav { padding: 11px 16px; }
+      .hero {
+        min-height: 700px;
+        background-position: 57% center;
+      }
+      .hero-inner { width: min(100% - 32px, 1160px); padding-bottom: 66px; }
+      .progress-slogan { font-size: 1rem; }
+      .section { padding: 78px 16px; }
+      .section-heading, .opening-grid, .strengths { grid-template-columns: 1fr; gap: 28px; }
+      .identity-panel { width: min(100%, 380px); margin: 12px auto 0; }
+      .strength-intro { position: static; }
+      .split, .promise-list { grid-template-columns: 1fr; }
+      .promise-item { min-height: auto; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 160px 160px; }
+      .gallery-item:first-child { grid-row: span 1; grid-column: span 2; }
+      .gallery-label { font-size: 11px; }
+      .character-decor {
+        width: 88px;
+        opacity: .2;
+        filter: none;
+      }
+      .character-calm,
+      .character-ready,
+      .character-courage {
+        right: 8px;
+        bottom: 12px;
+      }
+      .character-thinking {
+        left: 8px;
+        bottom: 12px;
+      }
+      #opening { padding-bottom: 180px; }
+      #why,
+      #promise { padding-bottom: 160px; }
+      .character-calm,
+      .character-thinking,
+      .character-ready {
+        bottom: 28px;
+        opacity: .52;
+      }
+      .character-calm,
+      .character-ready { right: 22px; }
+      .character-thinking { left: 22px; }
+      .character-finish {
+        right: 8px;
+        top: 48px;
+        width: 106px;
+        opacity: .28;
+      }
+    }
+    @media (max-width: 470px) {
+      h1 { font-size: 3.3rem; }
+      .hero-note { margin-top: 36px; }
+      .gallery-grid { display: block; }
+      .gallery-item { height: 210px; margin-bottom: 12px; }
+      .gallery-item:first-child { height: 260px; }
+      .statement, .promise-item { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-nav">
+    <a class="brand" href="#top" aria-label="返回首页">
+      <span class="brand-mark">何</span>
+      <span>26审计4班 · 学习委员竞选</span>
+    </a>
+    <nav class="nav-links" aria-label="页面导航">
+      <a href="#opening">开场</a>
+      <a href="#why">动机</a>
+      <a href="#promise">行动</a>
+      <a href="#strengths">优势</a>
+      <a href="#closing">结尾</a>
+    </nav>
+    <button class="nav-cta" id="presentationBtn" type="button" title="切换投屏模式">投屏模式</button>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div class="eyebrow">26级审计学4班 · 竞选学习委员</div>
+        <h1>何浩冉<br>和大家一起，把学习这件事做好。</h1>
+        <p class="progress-slogan">我太想进步了</p>
+        <p class="hero-lede">我不是来证明自己“最会学习”的，而是想把自己的学习兴趣、工具尝试和认真负责，变成一份对班级真正有用的服务。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#opening">听我说说</a>
+          <a class="button button-secondary" href="#gallery">看看我的学习视野</a>
+        </div>
+        <div class="hero-note">
+          <span>愿意学习</span>
+          <span>愿意沟通</span>
+          <span>愿意接受监督</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section opening" id="opening">
+      <img class="character-decor character-calm" src="assets/yellow-character-1.png" alt="" aria-hidden="true">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">01 / 开场白</div>
+            <h2>先认识一下，<br>我是何浩冉。</h2>
+          </div>
+          <p>这不是一份“完美人设”介绍，而是我站在这里，认真参与一次班级选择。</p>
+        </div>
+        <div class="opening-grid">
+          <div class="speech">
+            <p>老师、各位同学，大家好，我是<strong>何浩冉</strong>。很高兴能够站在这里，参与学习委员的竞选。</p>
+            <p>我知道，我们班有很多比我成绩更好的同学，所以我并不想把自己包装成“最优秀的人”。我更希望成为一个<strong>能帮助大家学习、营造良好氛围、和大家一起提升的人</strong>。</p>
+          </div>
+          <div class="identity-panel">
+            <span>LEARNING COMMITTEE CANDIDATE</span>
+            <strong>何浩冉</strong>
+            <p>26级审计学4班<br>愿意学习 · 愿意沟通 · 愿意负责</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <img class="character-decor character-thinking" src="assets/yellow-character-3.png" alt="" aria-hidden="true">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">02 / 我为什么来</div>
+            <h2>我对学习委员的理解，<br>不是“学习好就能当”。</h2>
+          </div>
+          <p>学习委员既要传递信息，也要连接同学；既要完成老师交代的事情，也要让大家在需要时找得到人、问得到问题。</p>
+        </div>
+        <div class="split">
+          <article class="statement">
+            <h3>学习，不只是一张成绩单</h3>
+            <p>我比较喜欢学习，但我理解的学习不是单纯完成考试任务，而是对真正感兴趣的东西持续投入，努力让自己在不同方面得到提升。最近我也在学习 ChatGPT、Python、Excel 等工具。</p>
+          </article>
+          <article class="statement">
+            <h3>班级，是一起变好的地方</h3>
+            <p>军训这段时间让我发现，我们班同学都很优秀、很聪明，也有自己的想法。我希望以后能和大家一起学习、互相分享，而不是让“不会”变成不好意思开口。</p>
+          </article>
+        </div>
+        <div class="quote-bar">不是一个人偷偷卷，而是让班级学习资料“有回应”、信息传递“不卡顿”、遇到问题“有人接”。</div>
+      </div>
+    </section>
+
+    <section class="section promise" id="promise">
+      <img class="character-decor character-ready" src="assets/yellow-character-2.png" alt="" aria-hidden="true">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">03 / 如果我当选</div>
+            <h2>我会把职责，<br>落实成几件具体的事。</h2>
+          </div>
+          <p>不画大饼，先从每一次通知、每一份资料、每一个同学的反馈做起。</p>
+        </div>
+        <div class="promise-list">
+          <article class="promise-item">
+            <span class="promise-number">A / 及时传递</span>
+            <h3>老师交代的事情，及时完成</h3>
+            <p>认真做好学习相关任务的信息整理和传达，重要事项尽量做到清楚、准确、有记录。</p>
+          </article>
+          <article class="promise-item">
+            <span class="promise-number">B / 资源共享</span>
+            <h3>把有用的资料，整理给大家</h3>
+            <p>配合课程进度整理资料、工具和复习提醒，让大家少一点信息差，多一点可执行的参考。</p>
+          </article>
+          <article class="promise-item">
+            <span class="promise-number">C / 反馈闭环</span>
+            <h3>同学有需要，我会积极回应</h3>
+            <p>遇到自己不会的问题，我会先认真听，再去查资料或向优秀同学学习，尽量把问题跟进到底。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="strengths">
+      <img class="character-decor character-courage" src="assets/yellow-character-4.png" alt="" aria-hidden="true">
+      <div class="section-inner">
+        <div class="strengths">
+          <div class="strength-intro">
+            <div class="section-kicker">04 / 我的优势</div>
+            <h2>我最想带来的，<br>是持续学习的劲头。</h2>
+            <p>班级里有很多优秀同学，学习成绩不是我唯一能拿出来说的优势。但我愿意从自己的长处出发，也愿意承认不足、接受建议、持续改进。</p>
+            <div class="honesty">“指出我的不当之处，我会听；发现自己做得不够，我会改。”</div>
+          </div>
+          <div class="skill-list">
+            <article class="skill">
+              <div class="skill-icon">01</div>
+              <div>
+                <h3>自主学习和迁移能力</h3>
+                <p>高中阶段曾从体育方向转入文化课学习，通过调整方法和投入强度逐步进入年级前列。这让我更相信，方法不对可以调整，基础不够可以补。</p>
+              </div>
+            </article>
+            <article class="skill">
+              <div class="skill-icon">02</div>
+              <div>
+                <h3>主动接触数字化工具</h3>
+                <p>高考后的暑期，我自主学习 Excel、Python、PPT 和人工智能工具，并尝试完成产品展示网站、微信小程序等项目。现在仍在持续练习。</p>
+              </div>
+            </article>
+            <article class="skill">
+              <div class="skill-icon">03</div>
+              <div>
+                <h3>沟通、协作与责任感</h3>
+                <p>曾担任校足球队队长，理解团队协作、任务分工和现场协调；也愿意从基础事务和临时任务做起，把细节做好。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery" id="gallery">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">05 / 学习视野</div>
+            <h2>走出去看看，<br>也把问题带回来想。</h2>
+          </div>
+          <p>这些照片记录的是我参加产业展会、分享会和交流活动的经历。它们不是“我有多厉害”的证明，而是我愿意主动接触新领域、拓展视野的记录。</p>
+        </div>
+        <div class="gallery-grid">
+          <button class="gallery-item" type="button" data-src="assets/event-4.webp" data-caption="IOTE金奖2026创新产品评选现场">
+            <img src="assets/event-4.webp" alt="IOTE金奖2026创新产品评选现场">
+            <span class="gallery-label">IOTE金奖2026 · 创新产品评选</span>
+          </button>
+          <button class="gallery-item" type="button" data-src="assets/event-1.webp" data-caption="RFID产业交流晚宴与白皮书资料">
+            <img src="assets/event-1.webp" alt="RFID产业交流晚宴与白皮书资料">
+            <span class="gallery-label">RFID产业交流 · 从资料开始了解行业</span>
+          </button>
+          <button class="gallery-item" type="button" data-src="assets/event-2.webp" data-caption="产业交流活动现场">
+            <img src="assets/event-2.webp" alt="产业交流活动现场">
+            <span class="gallery-label">产业交流活动 · 观察真实商业场景</span>
+          </button>
+          <button class="gallery-item" type="button" data-src="assets/event-3.webp" data-caption="RFID市场数据分享现场">
+            <img src="assets/event-3.webp" alt="RFID市场数据分享现场">
+            <span class="gallery-label">市场数据分享 · 练习从数据看问题</span>
+          </button>
+        </div>
+        <p class="gallery-note">点击图片可放大查看。网站中的照片仅用于展示参加活动和学习观察的经历，不代表本人担任主讲、获奖或组织方。</p>
+      </div>
+    </section>
+
+    <section class="section closing" id="closing">
+      <img class="character-decor character-finish" src="assets/yellow-character-5.png" alt="" aria-hidden="true">
+      <div class="section-inner closing-inner">
+        <div class="section-kicker">06 / 最后想说</div>
+        <h2>人生一直在面对选择与被选择。</h2>
+        <p>站在台上的时候，我们已经成为了更勇敢的自己。所以，无论最后结果如何，我都希望我们能保持初出发时的勇气和对未来的希望，去争取自己想要的一切。</p>
+        <p>如果你愿意把这一票投给我，我会把它当成一份信任，用认真、回应和行动来回答。</p>
+        <a class="button button-primary" href="#top">谢谢大家，请投我一票</a>
+        <small>何浩冉 · 26级审计学4班 · 学习委员竞选</small>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">把学习这件事做好，也把班级里的每一次需要接住。</footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="照片预览">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭照片预览">×</button>
+    <div>
+      <img id="lightboxImage" alt="">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const body = document.body;
+      const presentationBtn = document.querySelector("#presentationBtn");
+      const lightbox = document.querySelector("#lightbox");
+      const lightboxImage = document.querySelector("#lightboxImage");
+      const lightboxCaption = document.querySelector("#lightboxCaption");
+      const closeButton = document.querySelector("#lightboxClose");
+
+      presentationBtn.addEventListener("click", () => {
+        body.classList.toggle("presentation-mode");
+        presentationBtn.textContent = body.classList.contains("presentation-mode") ? "退出投屏" : "投屏模式";
+      });
+
+      document.querySelectorAll(".gallery-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          lightboxImage.src = item.dataset.src;
+          lightboxImage.alt = item.querySelector("img").alt;
+          lightboxCaption.textContent = item.dataset.caption;
+          lightbox.classList.add("is-open");
+          closeButton.focus();
+        });
+      });
+
+      const closeLightbox = () => {
+        lightbox.classList.remove("is-open");
+        lightboxImage.src = "";
+      };
+      closeButton.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          if (lightbox.classList.contains("is-open")) closeLightbox();
+          else if (body.classList.contains("presentation-mode")) {
+            body.classList.remove("presentation-mode");
+            presentationBtn.textContent = "投屏模式";
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
